@@ -49,7 +49,7 @@ public class BasePage {
 	}
 	
 	public Alert waitAlertPresence(WebDriver driver) {
-		return new WebDriverWait(driver,15).until(ExpectedConditions.alertIsPresent());
+		return new WebDriverWait(driver, 15).until(ExpectedConditions.alertIsPresent());
 	}
 	
 	public void alertAccept(WebDriver driver) {
