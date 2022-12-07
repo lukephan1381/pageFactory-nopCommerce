@@ -1,7 +1,9 @@
 package pageFactory;
 
 import org.openqa.selenium.WebDriver;
-import pageUIs.CustomerInfoPageUI;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 import commons.BasePage;
 
 public class CustomerInfoPageObject extends BasePage{
@@ -12,9 +14,39 @@ public class CustomerInfoPageObject extends BasePage{
 		this.driver = driver;
 	}
 	
+	@FindBy(id="save-info-button")
+	WebElement saveButton;
+	
+	@FindBy(id="gender-male")
+	WebElement genderMaleRadio;
+	
+	@FindBy(id="gender-female")
+	WebElement genderFemaleRadio;
+	
+	@FindBy(id="FirstName")
+	WebElement firstNameTextbox;
+	
+	@FindBy(id="LastName")
+	WebElement lastNameTextbox;
+	
+	@FindBy(name="DateOfBirthDay")
+	WebElement dayDropdown;
+	
+	@FindBy(name="DateOfBirthMonth")
+	WebElement monthDropdown;
+	
+	@FindBy(name="DateOfBirthYear")
+	WebElement yearDropdown;
+	
+	@FindBy(id="Email")
+	WebElement emailTextbox;
+	
+	@FindBy(id="Company")
+	WebElement companyTextbox;
+	
 	public void clickToSaveButton() {
-		waitElementToBeClickable(driver, CustomerInfoPageUI.SAVE_BUTTON);
-		clickToElement(driver,CustomerInfoPageUI.SAVE_BUTTON);
+		waitElementToBeClickable(driver, saveButton);
+		clickToElement(driver,saveButton);
 	}
 	
 	public boolean isGenderMaleRadioSelected() {

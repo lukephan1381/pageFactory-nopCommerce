@@ -1,5 +1,6 @@
 package commons;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
@@ -49,7 +50,8 @@ public class BasePage {
 	}
 	
 	public Alert waitAlertPresence(WebDriver driver) {
-		return new WebDriverWait(driver, 15).until(ExpectedConditions.alertIsPresent());
+		//return new WebDriverWait(driver, 15).until(ExpectedConditions.alertIsPresent());
+		return new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.alertIsPresent());
 	}
 	
 	public void alertAccept(WebDriver driver) {
@@ -114,16 +116,16 @@ public class BasePage {
 		return driver.findElements(getByXpath(locator));
 	}
 	
-	public void clickToElement(WebDriver driver, String locator) {
-		getElement(driver, locator).click();
+	public void clickToElement(WebElement element) {
+		element.click();
 	}
 	
-	public void sendKeyToElement(WebDriver driver, String locator, String valueToSendKey) {
-		getElement(driver, locator).sendKeys(valueToSendKey);
+	public void sendKeyToElement(WebElement element, String valueToSendKey) {
+		element.sendKeys(valueToSendKey);
 	}
 	
-	public void selectItemInDropdown(WebDriver driver, String locator, String textValue) {
-		new Select(getElement(driver, locator)).selectByVisibleText(textValue);;
+	public void selectItemInDropdown(WebElement element, String textValue) {
+		new Select(element).selectByVisibleText(textValue);
 	}
 	
 	public String getSelectedItemInDropdown(WebDriver driver, String locator) {
@@ -138,7 +140,7 @@ public class BasePage {
 		getElement(driver, parentLocator).click();
 		sleepInSecond(3);
 
-		List<WebElement> allDropdownItems = new WebDriverWait(driver, 30).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childLocator)));
+		List<WebElement> allDropdownItems = new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(childLocator)));
 		
 		for (WebElement item : allDropdownItems) {
 			String actualTextItem = item.getText();
@@ -168,15 +170,15 @@ public class BasePage {
 		return getElements(driver, locator).size();
 	}
 	
-	public void checkOnCheckboxOrRadio(WebDriver driver, String locator) {
-		if (!isElementSelected(driver, locator)) {
-			clickToElement(driver, locator);
+	public void checkOnCheckboxOrRadio(WebElement element) {
+		if (!element.isSelected()) {
+			element.click();;
 		}
 	}
 	
-	public void uncheckTheCheckbox(WebDriver driver, String locator) {
-		if (isElementSelected(driver, locator)){
-			clickToElement(driver, locator);
+	public void uncheckTheCheckbox(WebElement element) {
+		if (element.isSelected()){
+			clickToElement(element);
 		}
 	}
 	
@@ -277,7 +279,8 @@ public class BasePage {
 	}
 
 	public boolean areJQueryAndJSLoadedSuccess(WebDriver driver) {
-		WebDriverWait explicitWait = new WebDriverWait(driver, 15);
+		//WebDriverWait explicitWait = new WebDriverWait(driver, 15);
+		WebDriverWait explicitWait = new WebDriverWait(driver, Duration.ofSeconds(15));
 		ExpectedCondition<Boolean> jQueryLoad = new ExpectedCondition<Boolean>() {
 			@Override
 			public Boolean apply(WebDriver driver) {
@@ -314,32 +317,32 @@ public class BasePage {
 	
 	/* Waits */
 	
-	public void waitElementToBeVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+	public void waitElementToBeVisible(WebDriver driver, WebElement element) {
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOf(element));
 	}
 	
-	public void waitElementToBeClickable(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+	public void waitElementToBeClickable(WebDriver driver, WebElement element) {
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
 	public void waitElementToBeInvisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
 	}
 	
 	public void waitListElementsToBeVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByXpath(locator)));
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByXpath(locator)));
 	}
 	
 	public void waitListElementsToBeInvisibile(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.visibilityOfAllElements(getElements(driver, locator)));
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfAllElements(getElements(driver, locator)));
 	}
 	
 	public void waitElementPresence(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfElementLocated(getByXpath(locator)));
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.presenceOfElementLocated(getByXpath(locator)));
 	}
 	
 	public void waitListElementsPresence(WebDriver driver, String locator) {
-		new WebDriverWait(driver, 15).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(locator)));
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.presenceOfAllElementsLocatedBy(getByXpath(locator)));
 	}
 
 }

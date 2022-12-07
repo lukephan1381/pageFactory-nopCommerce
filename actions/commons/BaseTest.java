@@ -1,8 +1,8 @@
 package commons;
 
+import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -39,7 +39,8 @@ public class BaseTest {
 			throw new RuntimeException("Cannot find browser name.");
 		}
 		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		driver.manage().window().maximize();
 		driver.get("https://demo.nopcommerce.com/");
 		return driver;
