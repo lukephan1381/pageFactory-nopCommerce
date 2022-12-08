@@ -128,8 +128,8 @@ public class BasePage {
 		new Select(element).selectByVisibleText(textValue);
 	}
 	
-	public String getSelectedItemInDropdown(WebDriver driver, String locator) {
-		return new Select(getElement(driver, locator)).getFirstSelectedOption().getText();
+	public String getSelectedItemInDropdown(WebElement element) {
+		return new Select(element).getFirstSelectedOption().getText();
 	}
 	
 	public Boolean isDropdownMultiple(WebDriver driver, String locator) {
@@ -154,8 +154,8 @@ public class BasePage {
 		}
 	}
 	
-	public String getElementAttribute(WebDriver driver, String locator, String attributeName) {
-		return getElement(driver, locator).getAttribute(attributeName);
+	public String getElementAttributeValue(WebElement element) {
+		return element.getAttribute("value");
 	}
 	
 	public void getElementCSSValue(WebDriver driver, String locator, String propertyName) {
@@ -182,12 +182,12 @@ public class BasePage {
 		}
 	}
 	
-	public boolean isElementDisplayed(WebDriver driver, String locator) {
-		return getElement(driver, locator).isDisplayed();
+	public boolean isElementDisplayed(WebElement element) {
+		return element.isDisplayed();
 	}
 	
-	public boolean isElementSelected(WebDriver driver, String locator) {
-		return getElement(driver, locator).isSelected();
+	public boolean isElementSelected(WebElement element) {
+		return element.isSelected();
 	}
 	
 	public boolean isElementEnabled(WebDriver driver, String locator) {

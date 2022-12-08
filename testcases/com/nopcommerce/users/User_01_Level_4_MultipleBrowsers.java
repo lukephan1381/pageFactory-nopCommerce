@@ -94,13 +94,13 @@ public class User_01_Level_4_MultipleBrowsers extends BaseTest{
 		customerInfoPage = new CustomerInfoPageObject(driver);
 		
 		Assert.assertTrue(customerInfoPage.isGenderMaleRadioSelected());
-		Assert.assertEquals(customerInfoPage.getFirstNameTextboxAttribute("value"), "Luke");
-		Assert.assertEquals(customerInfoPage.getLastNameTextboxAttribute("value"), "Phan");
+		Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(),"Luke");
+		Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(),"Phan");
 		Assert.assertEquals(customerInfoPage.getDayDropdownSelectedItem(), "28");
 		Assert.assertEquals(customerInfoPage.getMonthDropdownSelectedItem(), "January");
 		Assert.assertEquals(customerInfoPage.getYearDropdownSelectedItem(), "1991");
-		Assert.assertEquals(customerInfoPage.getEmailTextboxAttribute("value"), emailAddress);
-		Assert.assertEquals(customerInfoPage.getCompanyTextboxAttribute("value"), "Marvel");
+		Assert.assertEquals(customerInfoPage.getEmailTextboxValue(), emailAddress);
+		Assert.assertEquals(customerInfoPage.getCompanyTextboxValue(), "Marvel");
 		
 	}
 	
