@@ -1,8 +1,10 @@
 package pageFactory;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 import commons.BasePage;
-import pageUIs.HomePageUI;
 
 public class HomePageObject extends BasePage{
 	
@@ -12,23 +14,32 @@ public class HomePageObject extends BasePage{
 		this.driver = driver;
 	}
 	
+	@FindBy(className="ico-register")
+	WebElement registerLink;
+	
+	@FindBy(className="ico-login")
+	WebElement loginLink;
+	
+	@FindBy(className="ico-account")
+	WebElement myAccountLink;
+	
 	public void clickToRegisterButton() {
-		waitElementToBeClickable(driver, HomePageUI.REGISTER_LINK);
-		clickToElement(driver, HomePageUI.REGISTER_LINK);
+		waitElementToBeClickable(driver, registerLink);
+		clickToElement(registerLink);
 	}
 	public String getHomePageURL() {
 		return getPageUrl(driver);
 	}
 	public void clickToLoginLink() {
-		waitElementToBeClickable(driver, HomePageUI.LOGIN_LINK);
-		clickToElement(driver, HomePageUI.LOGIN_LINK);
+		waitElementToBeClickable(driver, loginLink);
+		clickToElement(loginLink);
 	}
 	public boolean isMyAccountLinkDisplayed() {
-		return isElementDisplayed(driver, HomePageUI.MY_ACCOUNT_LINK);
+		return isElementDisplayed(myAccountLink);
 	}
 	public void clickToMyAccountLink() {
-		waitElementToBeClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
-		clickToElement(driver, HomePageUI.MY_ACCOUNT_LINK);
+		waitElementToBeClickable(driver, myAccountLink);
+		clickToElement(myAccountLink);
 	}
 
 }

@@ -1,8 +1,10 @@
 package pageFactory;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 import commons.BasePage;
-import pageUIs.LoginPageUI;
 
 public class LoginPageObject extends BasePage {
 	
@@ -12,19 +14,28 @@ public class LoginPageObject extends BasePage {
 		this.driver = driver;
 	}
 	
+	@FindBy(id="Email")
+	WebElement emailTextbox;
+	
+	@FindBy(id="Password")
+	WebElement passwordTextbox;
+	
+	@FindBy(xpath="//button[text()='Log in']")
+	WebElement loginButton;
+	
 	public void inputToEmailTextbox(String emailAddress) {
-		waitElementToBeVisible(driver, LoginPageUI.EMAIL_TEXTBOX);
-		sendKeyToElement(driver, LoginPageUI.EMAIL_TEXTBOX, emailAddress);
+		waitElementToBeVisible(driver, emailTextbox);
+		sendKeyToElement(emailTextbox, emailAddress);
 	}
 
 	public void inputToPasswordTextbox(String password) {
-		waitElementToBeVisible(driver, LoginPageUI.PASSWORD_TEXTBOX);
-		sendKeyToElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
+		waitElementToBeVisible(driver, passwordTextbox);
+		sendKeyToElement(passwordTextbox, password);
 	}
 
 	public void clickToLoginButton() {
-		waitElementToBeClickable(driver, LoginPageUI.LOGIN_BUTTON);
-		clickToElement(driver, LoginPageUI.LOGIN_BUTTON);
+		waitElementToBeClickable(driver, loginButton);
+		clickToElement(loginButton);
 	}
 
 }

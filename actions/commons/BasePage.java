@@ -325,16 +325,16 @@ public class BasePage {
 		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
-	public void waitElementToBeInvisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+	public void waitElementToBeInvisible(WebDriver driver, WebElement element) {
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.invisibilityOf(element));
 	}
 	
-	public void waitListElementsToBeVisible(WebDriver driver, String locator) {
-		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(getByXpath(locator)));
+	public void waitListElementsToBeVisible(WebDriver driver, WebElement elements) {
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
 	
-	public void waitListElementsToBeInvisibile(WebDriver driver, String locator) {
-		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfAllElements(getElements(driver, locator)));
+	public void waitListElementsToBeInvisibile(WebDriver driver, WebElement elements) {
+		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.visibilityOfAllElements(elements));
 	}
 	
 	public void waitElementPresence(WebDriver driver, String locator) {
