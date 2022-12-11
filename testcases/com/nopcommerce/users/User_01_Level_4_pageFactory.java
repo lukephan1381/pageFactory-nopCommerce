@@ -13,7 +13,7 @@ import pageFactory.HomePageObject;
 import pageFactory.LoginPageObject;
 import pageFactory.RegisterPageObject;
 
-public class User_01_Level_4_MultipleBrowsers extends BaseTest{
+public class User_01_Level_4_pageFactory extends BaseTest{
 	
 	String githubToken = "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";
 	WebDriver driver;

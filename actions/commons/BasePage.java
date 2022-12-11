@@ -327,6 +327,7 @@ public class BasePage {
 	
 	public void waitElementToBeInvisible(WebDriver driver, WebElement element) {
 		new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.invisibilityOf(element));
+		//new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(element));
 	}
 	
 	public void waitListElementsToBeVisible(WebDriver driver, WebElement elements) {
